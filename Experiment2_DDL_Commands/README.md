@@ -105,123 +105,207 @@ CREATE TABLE Table_Name (
 
 **Question 1**
 --
--- Paste Question 1 here
+Create a table named ProjectAssignments with the following constraints:
+AssignmentID as INTEGER should be the primary key.
+EmployeeID as INTEGER should be a foreign key referencing Employees(EmployeeID).
+ProjectID as INTEGER should be a foreign key referencing Projects(ProjectID).
+AssignmentDate as DATE should be NOT NULL.
 
 ```sql
--- Paste your SQL code below for Question 1
+create table ProjectAssignments(
+
+AssignmentID INTEGER PRIMARY KEY,
+EmployeeID INTEGER,
+ProjectID INTEGER,
+AssignmentDate DATE NOT NULL,
+FOREIGN KEY (EmployeeID) REFERENCES Employees(EmployeeID),
+FOREIGN KEY (ProjectID) REFERENCES Projects(ProjectID)
+
+
+);
 ```
 
 **Output:**
 
-![Output1](output.png)
+![Screenshot 2025-05-13 134518](https://github.com/user-attachments/assets/cd425635-c63a-414d-8cc2-9d8c1f17278c)
+
 
 **Question 2**
 ---
--- Paste Question 2 here
+create a table named jobs including columns job_id, job_title, min_salary and max_salary, and make sure that, the default value for job_title is blank and min_salary is 8000 and max_salary is NULL will be entered automatically at the time of insertion if no value assigned for the specified columns.
 
 ```sql
--- Paste your SQL code below for Question 2
+create table jobs(
+
+job_id INT,
+job_title VARCHAR(255) DEFAULT '',
+min_salary INT DEFAULT 8000,
+max_salary INT DEFAULT NULL
+
+);
 ```
 
 **Output:**
 
-![Output2](output.png)
+![Screenshot 2025-05-13 134648](https://github.com/user-attachments/assets/9c8d24ac-c6f9-4b27-ba5f-b6ecdffb46e1)
+
 
 **Question 3**
 ---
--- Paste Question 3 here
+Insert a customer with CustomerID 301, Name Michael Jordan, Address 123 Maple St, City Chicago, and ZipCode 60616 into the Customers table.
 
 ```sql
--- Paste your SQL code below for Question 3
+insert into Customers(CustomerID, Name, Address, City, ZipCode)
+VALUES (301,'Michael Jordan','123 Maple St','Chicago',60616);
 ```
 
 **Output:**
 
-![Output3](output.png)
+![Screenshot 2025-05-13 134748](https://github.com/user-attachments/assets/1b7b88b3-0fcf-46a3-b07f-2ee67a85fa6a)
+
 
 **Question 4**
 ---
--- Paste Question 4 here
+Write a SQL Query for inserting the below values in the table Customers
+
+ID               NAME             AGE  ADDRESS     SALARY      
+---------------  ---------------  ---  ----------  ----------  
+1                Ramesh           32   Ahmedabad   2000
+2                Khilan           25   Delhi       1500
+3                Kaushik          23   Kota        2000
 
 ```sql
--- Paste your SQL code below for Question 4
+insert into Customers(ID,NAME,AGE,ADDRESS,SALARY)
+VALUES 
+(1,'Ramesh',32,'Ahmedabad',2000),
+(2,'Khilan',25,'Delhi',1500),
+(3,'Kaushik',23,'Kota',2000);
 ```
 
 **Output:**
 
-![Output4](output.png)
+![Screenshot 2025-05-13 134835](https://github.com/user-attachments/assets/e348d64e-54bf-4c4d-ab25-ebb59d0ede2a)
+
 
 **Question 5**
 ---
--- Paste Question 5 here
+Write a SQL query to add a column named Date_of_birth as Date in the Student_details table.
 
 ```sql
--- Paste your SQL code below for Question 5
+alter table Student_details
+add column Date_of_birth Date;
 ```
 
 **Output:**
 
-![Output5](output.png)
+![Screenshot 2025-05-13 134924](https://github.com/user-attachments/assets/4018bc11-4e12-40c8-88ca-4643cdee702b)
+
 
 **Question 6**
 ---
--- Paste Question 6 here
+Write an SQL query to add two new columns, department_id and manager_id, to the table employee with datatype of INTEGER. The manager_id column should have a default value of NULL.
 
 ```sql
--- Paste your SQL code below for Question 6
+alter table employee
+add column department_id INTEGER;
+
+alter table employee
+add column manager_id INTEGER default NULL;
 ```
 
 **Output:**
 
-![Output6](output.png)
+![Screenshot 2025-05-13 135146](https://github.com/user-attachments/assets/9c62358e-7344-41f0-9577-059a80a0eca7)
+
 
 **Question 7**
 ---
--- Paste Question 7 here
+Create a table named Members with the following columns:
+
+MemberID as INTEGER
+MemberName as TEXT
+JoinDate as DATE
 
 ```sql
--- Paste your SQL code below for Question 7
+create table Members
+(
+
+MemberID INTEGER,
+MemberName TEXT,
+JoinDate DATE
+
+);
 ```
 
 **Output:**
 
-![Output7](output.png)
+![Screenshot 2025-05-13 135249](https://github.com/user-attachments/assets/0c53b1e4-da6f-400d-8440-eb1bd493b5c7)
+
 
 **Question 8**
 ---
--- Paste Question 8 here
+Create a table named Products with the following constraints:
+
+ProductID should be the primary key.
+ProductName should be NOT NULL.
+Price should be greater than 0.
+Stock should be greater than or equal to 0.
 
 ```sql
--- Paste your SQL code below for Question 8
+create table Products
+(
+
+ProductID primary key,
+ProductName NOT NULL,
+Price REAL CHECK (Price > 0),
+Stock INTEGER CHECK (Stock >= 0)
+
+);
 ```
 
 **Output:**
 
-![Output8](output.png)
+![Screenshot 2025-05-13 135433](https://github.com/user-attachments/assets/7bc25c44-35e6-416c-bd84-827db0c5a18f)
+
 
 **Question 9**
 ---
--- Paste Question 9 here
+Insert all customers from Old_customers into Customers
+
+Table attributes are CustomerID, Name, Address, Email
 
 ```sql
--- Paste your SQL code below for Question 9
+insert into Customers(CustomerID, Name, Address, Email)
+select CustomerID,Name,Address,Email
+from Old_customers;
 ```
 
 **Output:**
 
-![Output9](output.png)
+![Screenshot 2025-05-13 135617](https://github.com/user-attachments/assets/e3f698f7-0129-47b5-8878-58031025031d)
+
 
 **Question 10**
 ---
--- Paste Question 10 here
+Create a table named Orders with the following constraints:
+OrderID as INTEGER should be the primary key.
+OrderDate as DATE should be not NULL.
+CustomerID as INTEGER should be a foreign key referencing Customers(CustomerID).
 
 ```sql
--- Paste your SQL code below for Question 10
+create table Orders
+(
+
+OrderID INTEGER primary key,
+OrderDate DATE NOT NULL,
+CustomerID INTEGER,
+FOREIGN KEY (CustomerID) references Customers(CustomerID)
+);
 ```
 
 **Output:**
 
-![Output10](output.png)
+![Screenshot 2025-05-13 135746](https://github.com/user-attachments/assets/5ce89e52-82ec-4dbb-ab7f-f5e59bf3c940)
 
 
 ## RESULT
